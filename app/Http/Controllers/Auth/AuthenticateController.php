@@ -38,10 +38,10 @@ class AuthenticateController extends Controller
     public function login(LoginRequest $request)
     {
         // Login logic here
-        $request->validated();
-        $user = User::whereUsername($request->username)->first();
+        $validated = $request->validated();
+        $user = User::whereUsername($validated['username'])->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($validated['password'], $user->password)) {
             return response()->json(['message' => 'Invalid credentials'], 422);
         }
 
