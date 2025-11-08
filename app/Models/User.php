@@ -51,5 +51,10 @@ class User extends Authenticatable
     public function feeds()
     {
         return $this->hasMany(Feed::class);
-    }   
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

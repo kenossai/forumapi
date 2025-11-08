@@ -16,3 +16,4 @@ Route::get('/test', function () {
 Route::post('/register', [AuthenticateController::class, 'register']);
 Route::post('/login', [AuthenticateController::class, 'login']);
 Route::post('/feed/store', [FeedController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/feed/like/{feed_id}', [FeedController::class, 'like'])->middleware('auth:sanctum');
